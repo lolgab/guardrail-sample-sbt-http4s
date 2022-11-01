@@ -1,10 +1,11 @@
 import cats.syntax.all._
 import cats.effect._
+import epollcat.EpollApp
 
-object Main extends IOApp {
+object Main extends EpollApp {
 
   def run(args: List[String]): IO[ExitCode] = {
-    Server.server[IO].use(_ => IO.never).as(ExitCode.Success)
+    Server.server.use(_ => IO.never).as(ExitCode.Success)
   }
 
 }
